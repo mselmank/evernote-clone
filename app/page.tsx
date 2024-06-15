@@ -37,7 +37,7 @@ export default async function Index() {
       </div>
 <main>
 
-<pre>{JSON.stringify(notes, null, 2)}</pre>
+{/* <pre>{JSON.stringify(notes, null, 2)}</pre> */}
 
 </main>
       <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">

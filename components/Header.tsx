@@ -3,42 +3,35 @@ import SupabaseLogo from "./SupabaseLogo";
 
 export default function Header() {
   return (
-    <div className="flex flex-col gap-16 items-center">
-      <div className="flex gap-8 justify-center items-center">
-        <a
-          href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <SupabaseLogo />
-        </a>
-        <span className="border-l rotate-45 h-6" />
-        <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
-          <NextLogo />
-        </a>
+    <div className="App h-full py-6 px-6 ">
+      <div className=" shadow-lg border rounded-md">
+        <div className="mx-auto max-w-7xl py-12 px-6 lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <span className="block">Hello Tailwind</span>
+            <span className="block text-my-indigo">
+              Start editing to see some magic happen.
+            </span>
+          </h2>
+          <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+            <div className="inline-flex rounded-md shadow">
+              <a
+                href="#"
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-5 py-3 text-base font-medium text-white hover:bg-indigo-700"
+              >
+                Button
+              </a>
+            </div>
+            <div className="ml-3 inline-flex rounded-md shadow">
+              <a
+                href="#"
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-indigo-600 hover:bg-indigo-50"
+              >
+                Button
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-      <h1 className="sr-only">Supabase and Next.js Starter Template</h1>
-      <p className="text-3xl lg:text-4xl !leading-tight mx-auto max-w-xl text-center">
-        The fastest way to build apps with{" "}
-        <a
-          href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-          target="_blank"
-          className="font-bold hover:underline"
-          rel="noreferrer"
-        >
-          Supabase
-        </a>{" "}
-        and{" "}
-        <a
-          href="https://nextjs.org/"
-          target="_blank"
-          className="font-bold hover:underline"
-          rel="noreferrer"
-        >
-          Next.js
-        </a>
-      </p>
-      <div className="w-full p-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent my-8" />
     </div>
   );
 }

@@ -11,13 +11,14 @@ import {
   FormMessage,
   FormDescription,
 } from "../../../components/ui/form";
-import { Textarea } from "../../../components/ui/textarea"
+import { Textarea } from "../../../components/ui/textarea";
 import { Input } from "../../../components/ui/input";
 import { Switch } from "../../../components/ui/switch";
 import { Button } from "../../../components/ui/button";
-// import useStore from "@/lib/store/store";
+import { useNotesStore } from "@/app/providers/notes-stores-provider";
 
 interface NotaProps {
+  id?: number; // Opcional si Supabase genera el ID automáticamente
   titulo: string;
   contenido: string;
   fechaCreacion: Date;
@@ -34,24 +35,10 @@ const NoteForm: React.FC = () => {
       favorita: false,
     },
   });
-//   const { updateNoteInStore, saveNoteToSupabase } = useStore();
 
-  const onSubmit = form.handleSubmit(async (data: NotaProps) => {
-    // try {
-    //   // 1. Actualizar Zustand (opcional, para UI optimista)
-    //   updateNoteInStore(data); // Llama a la función del store para actualizar localmente
-
-    //   // 2. Guardar en Supabase
-    //   await saveNoteToSupabase(data); // Llama a la función del store para guardar en Supabase
-
-    //   // 3. Manejar éxito (opcional)
-    //   // toast.success("Nota guardada con éxito"); // Muestra una notificación de éxito (si usas toastify u otra librería)
-    //   form.reset(); // Reinicia el formulario
-    // } catch (error) {
-    //   // Manejar errores
-    //   console.error("Error al guardar la nota:", error);
-    //   console.error("Error al guardar la nota");
-    // }
+  const onSubmit = form.handleSubmit((data: NotaProps) => {
+    console.log("data", data);
+    // agregarNota();
   });
 
   return (

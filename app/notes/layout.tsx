@@ -8,11 +8,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 const BalanceLayout: FC<BalanceLayoutProps> = ({ children }) => {
   return (
-    <div>
-      <body className={inter.className}>
+    <html>
+      <body className="bg-background text-foreground">
         <NotesStoreProvider>{children}</NotesStoreProvider>
       </body>
-    </div>
+    </html>
   );
 };
 

@@ -1,28 +1,53 @@
-"use client";
 import Header from "../components/Header";
-import NoteForm from "./notes/components/NoteForm";
-
+import { createClient } from "@/utils/supabase/server";
+import NoteItem from "./notes/components/NoteItem";
+interface NotaProps {
+  titulo: string;
+  contenido: string;
+  fechaCreacion: Date;
+  fechaModificacion: Date;
+  favorita: boolean;
+}
+const notasSimuladas: NotaProps[] = [
+  {
+    titulo: "Nota 1",
+    contenido: "Contenido de la nota 1",
+    fechaCreacion: new Date(),
+    fechaModificacion: new Date(),
+    favorita: true,
+  },
+  {
+    titulo: "Nota 2",
+    contenido: "Contenido de la nota 2",
+    fechaCreacion: new Date(),
+    fechaModificacion: new Date(),
+    favorita: true,
+  },
+  {
+    titulo: "Nota 3",
+    contenido: "Contenido de la nota 3",
+    fechaCreacion: new Date(),
+    fechaModificacion: new Date(),
+    favorita: true,
+  },
+];
 export default async function Index() {
+  const supabase = createClient();
+  const { data: notes } = await supabase.from("notes").select();
+
   return (
-    <div className="flex-1 w-full flex flex-col gap-20 items-center">
-      <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
-        <Header />
-        <main className="flex-1 flex flex-col gap-6">
-          <NoteForm />
-        </main>
-      </div>
+    <div className="container mx-auto">
+      <Header />
+      <main className="flex">
+        <div></div>
+        <div className="grid grid-cols-4 gap-6 p-8">
+          {notes?.map((nota, index) => {
+            return <NoteItem key={index} {...nota} />;
+          })}
+        </div>
+      </main>
       <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
-        <p>
-          Powered by{" "}
-          <a
-            href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-            target="_blank"
-            className="font-bold hover:underline"
-            rel="noreferrer"
-          >
-            Supabase
-          </a>
-        </p>
+        Powered by Supabase
       </footer>
     </div>
   );

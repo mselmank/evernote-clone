@@ -1,4 +1,3 @@
-// store/notes.ts
 import { createStore } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { Note } from "../types/note";

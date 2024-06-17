@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { useNotesStore } from "@/app/providers/notes-stores-provider";
 import { useState } from "react";
 import { Note } from "@/app/types/note";
+import { toast } from "@/components/ui/use-toast";
 
 const FormSchema = z.object({
   titulo: z.string().min(1, {
@@ -26,6 +27,7 @@ const FormSchema = z.object({
   contenido: z.string().min(1, {
     message: "El contenido debe tener al menos 1 caracter.",
   }),
+  favorita: z.boolean().default(false).optional(),
 });
 type FormData = z.infer<typeof FormSchema>;
 const NoteForm: React.FC = () => {
@@ -38,21 +40,37 @@ const NoteForm: React.FC = () => {
     defaultValues: nuevaNota,
   });
 
-  const onSubmit = form.handleSubmit(async (data: FormData) => {
-    try {
-      setIsLoading(true);
-      agregarNota();
-      form.reset();
-    } catch (err) {
-      // todo
-    } finally {
-      setIsLoading(false);
+  // function onSubmit(data: z.infer<typeof FormSchema>) {
+
+  // }
+
+  const onSubmit = form.handleSubmit(
+    async (data: z.infer<typeof FormSchema>) => {
+      console.log("🚀 ~ data:", data);
+
+      // toast({
+      //   title: "You submitted the following values:",
+      //   description: (
+      //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+      //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+      //     </pre>
+      //   ),
+      // });
+      // try {
+      //   setIsLoading(true);
+      //   agregarNota();
+      //   form.reset();
+      // } catch (err) {
+      //   // todo
+      // } finally {
+      //   setIsLoading(false);
+      // }
     }
-  });
+  );
 
   return (
     <Form {...form}>
-      <form onSubmit={onSubmit} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="titulo"

@@ -42,10 +42,11 @@ const NoteForm: React.FC = () => {
   const onSubmit = form.handleSubmit(async (data: FormData) => {
     try {
       setIsLoading(true);
+      actualizarTitulo(data.titulo);
+      actualizarContenido(data.contenido);
       agregarNota();
       form.reset();
     } catch (err) {
-      // todo
     } finally {
       setIsLoading(false);
     }

@@ -1,9 +1,18 @@
-"use client";
-import { useNotesStore } from "../providers/notes-stores-provider";
+import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
+import { NotesPage } from "./NotesPage";
 
-const { actualizarContenido, agregarNota } = useNotesStore((state) => state);
+export default async function Notes() {
+  const supabase = createClient();
 
-export default async function NotesPage() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return redirect("/login");
+  }
+
   return (
     <>
       <NotesPage />

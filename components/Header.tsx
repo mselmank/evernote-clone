@@ -1,36 +1,16 @@
-import NextLogo from "./NextLogo";
-import SupabaseLogo from "./SupabaseLogo";
+import AuthButton from "./AuthButton";
+import DeployButton from "./DeployButton";
 
 export default function Header() {
   return (
-    <div className="App h-full py-6 px-6 ">
-      <div className=" shadow-lg border rounded-md">
-        <div className="mx-auto max-w-7xl py-12 px-6 lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            <span className="block">Hello Tailwind</span>
-            <span className="block text-my-indigo">
-              Start editing to see some magic happen.
-            </span>
-          </h2>
-          <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-            <div className="inline-flex rounded-md shadow">
-              <a
-                href="#"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-5 py-3 text-base font-medium text-white hover:bg-indigo-700"
-              >
-                Button
-              </a>
-            </div>
-            <div className="ml-3 inline-flex rounded-md shadow">
-              <a
-                href="#"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-indigo-600 hover:bg-indigo-50"
-              >
-                Button
-              </a>
-            </div>
+    <div className="App h-full ">
+      <div className="mx-auto max-w-7xl py-12 px-6 lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8">
+        <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
+          <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
+            <DeployButton />
+            <AuthButton />
           </div>
-        </div>
+        </nav>
       </div>
     </div>
   );
